@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="clasesBean.Faltas" table="faltas">
+	<!-- Primary Key -->
+	<composite-id name="id" class="clasesBean.FaltasId">  
+            <key-property name="id_Modulo" type="int">  
+                            <column name="ID_MODULO" />
+                        </key-property>  
+            <key-property name="id_Alumno" type="int">  
+                            <column name="ID_ALUMNO" />
+                        </key-property>  
+    </composite-id>  
+    <!-- Relación N:1 apuntando a tablas Alumnos, Modulos -->
+    	<many-to-one name="alumno" class="clasesBean.Alumnos" update="false" insert="false" fetch="select">
+             <column name="ID_ALUMNO" not-null="true" />
+         </many-to-one>
+         <many-to-one name="modulo" class="clasesBean.Modulos" update="false" insert="false" fetch="select">
+             <column name="ID_MODULO" not-null="true" />
+         </many-to-one>
+    <!-- HORAS -->
+   	<property name="horas" type="integer">
+            <column name="HORAS" length="11" not-null="true"/>
+ 	</property>
+</class>
+</hibernate-mapping>

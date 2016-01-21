@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="clasesBean.Alumnos" table="alumnos">
+        <!-- Primary Key -->
+        <id name="id_Alumno" type="int">
+            <column name="ID_ALUMNO"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- Curso -->
+        <property name="curso" type="string">
+            <column name="CURSO" length="10" not-null="true"/>
+        </property>
+        <!-- Nombre -->
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="30" not-null="true"/>
+        </property>
+        <!-- Apellido -->
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="40" not-null="true"/>
+        </property>
+        <!-- Relación N:M apuntando a tabla Faltas -->
+        <set name="faltas" table="faltas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_Alumno" not-null="true" />
+            </key>
+            <one-to-many class="clasesBean.Faltas"/>
+        </set>
+    </class>
+</hibernate-mapping>

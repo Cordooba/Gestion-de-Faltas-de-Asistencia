@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66a785f0-4d28-4c1a-b842-c25fa1360feb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idModulo" class="java.lang.Integer"/>
+	<parameter name="rutaImagen" class="java.lang.String"/>
+	<parameter name="nombreM" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     faltas.`ID_MODULO` AS faltas_ID_MODULO,
+     faltas.`ID_ALUMNO` AS faltas_ID_ALUMNO,
+     faltas.`HORAS` AS faltas_HORAS,
+     modulos.`ID_MODULO` AS modulos_ID_MODULO,
+     modulos.`CURSO` AS modulos_CURSO,
+     modulos.`NOMBRE` AS modulos_NOMBRE,
+     modulos.`SIGLAS` AS modulos_SIGLAS,
+     modulos.`HORAS` AS modulos_HORAS,
+     modulos.`PORCENTAJE` AS modulos_PORCENTAJE,
+     alumnos.`ID_ALUMNO` AS alumnos_ID_ALUMNO,
+     alumnos.`CURSO` AS alumnos_CURSO,
+     alumnos.`NOMBRE` AS alumnos_NOMBRE,
+     alumnos.`APELLIDO` AS alumnos_APELLIDO
+FROM
+     `modulos` modulos INNER JOIN `faltas` faltas ON modulos.`ID_MODULO` = faltas.`ID_MODULO`
+     INNER JOIN `alumnos` alumnos ON faltas.`ID_ALUMNO` = alumnos.`ID_ALUMNO`]]>
+	</queryString>
+	<field name="faltas_ID_MODULO" class="java.lang.Integer"/>
+	<field name="faltas_ID_ALUMNO" class="java.lang.Integer"/>
+	<field name="faltas_HORAS" class="java.lang.Integer"/>
+	<field name="modulos_ID_MODULO" class="java.lang.Integer"/>
+	<field name="modulos_CURSO" class="java.lang.String"/>
+	<field name="modulos_NOMBRE" class="java.lang.String"/>
+	<field name="modulos_SIGLAS" class="java.lang.String"/>
+	<field name="modulos_HORAS" class="java.lang.Integer"/>
+	<field name="modulos_PORCENTAJE" class="java.lang.Integer"/>
+	<field name="alumnos_ID_ALUMNO" class="java.lang.Integer"/>
+	<field name="alumnos_CURSO" class="java.lang.String"/>
+	<field name="alumnos_NOMBRE" class="java.lang.String"/>
+	<field name="alumnos_APELLIDO" class="java.lang.String"/>
+	<background>
+		<band height="500" splitType="Stretch">
+			<image>
+				<reportElement x="233" y="220" width="100" height="50" uuid="73123771-3cab-4604-9d63-354dc00e7221"/>
+				<imageExpression><![CDATA[$P{rutaImagen}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="20" backcolor="#6699FF" uuid="980d5376-2f1e-4095-9540-bf960f14b5af"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="20" width="554" height="20" backcolor="#3333FF" uuid="350410e6-6899-4927-99c3-4f2a20f84ba1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="40" width="555" height="20" backcolor="#6699FF" uuid="644be00b-846a-4aea-b8cb-965432acc994"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="59" width="555" height="20" backcolor="#3333FF" uuid="6b28daae-1c68-49e3-bc2e-ac1030e1a945"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1" y="10" width="554" height="49" uuid="900b60ca-4f97-4257-84c4-b7b7e74be3a6"/>
+				<textElement>
+					<font size="18" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Listado de Faltas de Asistencia de "+$P{nombreM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="59" width="131" height="20" uuid="f98f7373-f2c8-4882-a547-7ed6b562df36"/>
+				<textElement>
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Registro de Asistencia 1.0]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="33" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="454" y="0" width="100" height="20" uuid="5ad62730-e728-4c58-a705-7414c8dcc7c5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="59" height="20" backcolor="#6699FF" uuid="c1deba81-7b9a-43bd-8681-02d10bd560db"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Módulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="59" y="0" width="100" height="20" backcolor="#6699FF" uuid="bd85439f-b4d5-414e-bf41-0db130e65cac"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Módulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="291" y="0" width="57" height="20" backcolor="#6699FF" uuid="c69a8130-4fec-4b65-baf6-60518d2a0022"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="348" y="0" width="100" height="20" backcolor="#6699FF" uuid="8824e555-ffb7-4bee-b50f-ef41c3131a66"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="448" y="0" width="51" height="20" backcolor="#6699FF" uuid="2e8c2df6-fd3b-4317-a46d-3c959a18da9c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="159" y="0" width="57" height="20" backcolor="#6699FF" uuid="ed029d12-2f09-422f-a45b-f5ea1d275356"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="216" y="0" width="75" height="20" backcolor="#6699FF" uuid="40316bb5-8f65-4fcd-83c8-12349745d0fc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Porcentaje]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="499" height="1" uuid="fbf5fd80-80bd-404d-bba2-b23f9a57a88c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="19" width="499" height="1" uuid="21485abc-d314-41fe-bdf4-f6a17cea1374"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="1" height="18" uuid="f5e0243d-45e0-4652-812e-9d86332d0aac"/>
+			</line>
+			<line>
+				<reportElement x="59" y="0" width="1" height="18" uuid="79e13443-a151-4e27-a2b2-6e3abb9c5bd8"/>
+			</line>
+			<line>
+				<reportElement x="158" y="0" width="1" height="18" uuid="1e8be703-effa-49fa-aa90-3a8c84f62e70"/>
+			</line>
+			<line>
+				<reportElement x="499" y="0" width="1" height="18" uuid="c40da434-bd04-4d1d-9ced-49154ad27929"/>
+			</line>
+			<line>
+				<reportElement x="215" y="1" width="1" height="18" uuid="fc38ae72-9e7d-4fc4-af98-71f6ee8582a6"/>
+			</line>
+			<line>
+				<reportElement x="291" y="0" width="1" height="18" uuid="ce981fc7-6102-4aa0-8472-0051943d7a82"/>
+			</line>
+			<line>
+				<reportElement x="347" y="0" width="1" height="18" uuid="20be8c51-51c3-4a04-aab6-10cb6fc0c783"/>
+			</line>
+			<line>
+				<reportElement x="448" y="0" width="1" height="18" uuid="279b9fd9-4892-4cd0-8f26-a24d00d496cc"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="59" height="20" uuid="6d0b43d2-0f56-4ebd-af8d-49544c4560e9">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_ID_MODULO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="59" y="0" width="100" height="20" uuid="17037282-b7c3-4114-8417-faf598336878">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_NOMBRE}+" "+$F{modulos_SIGLAS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="348" y="0" width="100" height="20" uuid="0651e105-0967-4307-9349-94893c707f70">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{alumnos_NOMBRE}+" "+$F{alumnos_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="0" width="51" height="20" uuid="139d8665-ff45-43ac-b647-cad56f7f5306">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_HORAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="0" width="57" height="20" uuid="3fa8f8dd-0348-48fe-a95e-86645b9b2b44">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_HORAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="57" height="20" uuid="e903b5d5-3b07-49ee-9077-0fa1339871aa">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_ID_ALUMNO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="0" width="75" height="20" uuid="f35ef7c6-1716-47ed-b316-60641a9d1cf6">
+					<printWhenExpression><![CDATA[$F{faltas_ID_MODULO}==$P{idModulo} && $F{faltas_HORAS}<$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_PORCENTAJE}+"%"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="349" y="20" width="100" height="20" backcolor="#FF0000" uuid="9c761c77-aa34-48fb-89a4-dc946e001ced">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{alumnos_NOMBRE}+" "+$F{alumnos_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="20" width="59" height="20" backcolor="#FF0000" uuid="833aab26-6c98-4778-b621-4c7d84997f84">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_ID_MODULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="160" y="20" width="57" height="20" backcolor="#FF0000" uuid="ec4966dc-6121-4bf6-8623-33b8046aaca4">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_HORAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="449" y="20" width="51" height="20" backcolor="#FF0000" uuid="2377acee-c480-4950-980d-2708a7418a54">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_HORAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="292" y="20" width="57" height="20" backcolor="#FF0000" uuid="a7ff237f-3c2d-4cf5-b140-a1b77828505c">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{faltas_ID_ALUMNO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="60" y="20" width="100" height="20" backcolor="#FF0000" uuid="25dd6cda-3631-43b8-a488-b7a43fa8eb80">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_NOMBRE}+" "+$F{modulos_SIGLAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="217" y="20" width="75" height="20" backcolor="#FF0000" uuid="100038db-c4f0-4034-acce-fc7488bf7a52">
+					<printWhenExpression><![CDATA[$F{faltas_HORAS}>$F{modulos_HORAS}*$F{modulos_PORCENTAJE}/100 && $F{faltas_ID_MODULO}==$P{idModulo}]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{modulos_PORCENTAJE}+"%"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="434" y="34" width="80" height="20" uuid="8530408c-4dfb-4529-b2be-267009506ff2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="34" width="40" height="20" uuid="66f3f281-a8d0-4c8d-872e-8124eee310ca"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

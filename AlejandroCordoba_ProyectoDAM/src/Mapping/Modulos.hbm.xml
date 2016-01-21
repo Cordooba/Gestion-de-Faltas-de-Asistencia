@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="clasesBean.Modulos" table="modulos">
+        <!-- Primary Key -->
+        <id name="id_Modulo" type="int">
+            <column name="ID_MODULO"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- NOMBRE -->
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="40" not-null="true"/>
+        </property>
+        <!-- CURSO -->
+        <property name="curso" type="string">
+            <column name="CURSO" length="10" not-null="true"/>
+        </property>
+        <!-- SIGLAS -->
+        <property name="siglas" type="string">
+            <column name="SIGLAS" length="6" not-null="true"/>
+        </property>
+        <!-- HORAS -->
+        <property name="horas" type="int">
+            <column name="HORAS" length="5" not-null="true"/>
+        </property>
+         <!-- PORCENTAJE -->
+        <property name="porcentaje" type="int">
+            <column name="PORCENTAJE" length="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

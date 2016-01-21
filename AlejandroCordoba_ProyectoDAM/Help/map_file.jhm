@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE map
+PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
+"http://java.sun.com/products/javahelp/map_2_0.dtd">
+
+<map version="1.0">
+	<mapID target="aplicacion" url="html/main.html" />
+	<mapID target="alumnos" url="html/alumnos.html" />
+	<mapID target="modulos" url="html/modulos.html" />
+	<mapID target="faltas" url="html/faltas.html" />
+	<mapID target="alumnosAlta" url="html/alumnosAlta.html" />
+	<mapID target="alumnosBaja" url="html/alumnosBaja.html" />
+	<mapID target="alumnosModificar" url="html/alumnosModificar.html" />
+	<mapID target="faltasConsultar" url="html/faltasConsultar.html" />
+	<mapID target="faltasImprimir" url="html/faltasImprimir.html" />
+	<mapID target="faltasModificar" url="html/faltasModificar.html" />
+	<mapID target="faltasRegistrar" url="html/faltasRegistrar.html" />
+	<mapID target="modulosAlta" url="html/modulosAlta.html" />
+	<mapID target="modulosGestionar" url="html/modulosGestionar.html" />
+	<mapID target="modulosBaja" url="html/modulosBaja.html" />
+	<mapID target="modulosGestionarMatricular" url="html/modulosGestionarMatricular.html" />
+	<mapID target="modulosGestionarDesmatricular" url="html/modulosGestionarDesmatricular.html" />
+</map>
